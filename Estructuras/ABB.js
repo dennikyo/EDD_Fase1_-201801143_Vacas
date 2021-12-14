@@ -16,8 +16,8 @@ class abb{
         this.raiz = null;
     }
 
-    insertar(valor){
-        let nuevo = new nodo(valor);
+    insertar(id, nombre, direccion, telefono, correo){
+        let nuevo = new nodo(id, nombre, direccion, telefono, correo);
 
         if(this.raiz == null){
             this.raiz= nuevo;
@@ -48,7 +48,7 @@ class abb{
 
     preorden(raiz_actual){
         if(raiz_actual !=null){
-        console.log(raiz_actual.id);
+            console.log(raiz_actual.id,raiz_actual.nombre, raiz_actual.direccion, raiz_actual.telefono, raiz_actual.correo)
         this.preorden(raiz_actual.izq);
         this.preorden(raiz_actual.der);
 
@@ -59,7 +59,7 @@ class abb{
     inorden(raiz_actual){
         if(raiz_actual != null){
             this.inorden(raiz_actual.izq);
-            console.log(raiz_actual.id);
+            console.log(raiz_actual.id,raiz_actual.nombre, raiz_actual.direccion, raiz_actual.telefono, raiz_actual.correo)
             this.inorden(raiz_actual.der);
 
         }
@@ -69,7 +69,7 @@ class abb{
         if(raiz_actual != null){
             this.postorden(raiz_actual.izq);
             this.postorden(raiz_actual.der);
-            console.log(raiz_actual.id);
+            console.log(raiz_actual.id,raiz_actual.nombre, raiz_actual.direccion, raiz_actual.telefono, raiz_actual.correo)
             
 
         }
@@ -89,7 +89,7 @@ class abb{
     Generar_Nodos(raiz_actual){ //copia del metodo preorden jeje xd
         let nodos = "";
         if(raiz_actual != null){
-            nodos+= "n" + raiz_actual.id + "[label=\""+raiz_actual.id+"\"]\n";
+            nodos+= "n" + raiz_actual.id + "[label=\""+raiz_actual.id+" "+raiz_actual.nombre+" "+raiz_actual.direccion+" "+raiz_actual.telefono+" "+raiz_actual.correo+"\"]\n";
             nodos+=this.Generar_Nodos(raiz_actual.izq);
             nodos+=this.Generar_Nodos(raiz_actual.der);
         }
@@ -115,20 +115,17 @@ class abb{
         }
         return cadena;
     }
-
-
-
 }
 arbol = new abb();
-arbol.insertar(10);
-arbol.insertar(5);
-arbol.insertar(15);
-arbol.insertar(7);
-arbol.insertar(25);
-arbol.insertar(3);
-arbol.insertar(8);
-arbol.insertar(17);
-arbol.insertar(14);
+arbol.insertar(10,"nombre","lamaya18", 123456,"pupo@gmail.com");
+arbol.insertar(5, "denisse", "duruelo52", 35249001, "denisse@gmail.com");
+arbol.insertar(15, "daniel", "colonialareformita", 192837,"zdani@gmail.com");
+arbol.insertar(7, "timytorner", "casttlewase", 12345678, "misca@gmail.com");
+arbol.insertar(25, "yunikua", "lacasademickymaus",9876543, "mini@gmail.com");
+arbol.insertar(3, "sopero", "pupomansion", 5643872, "puperto@gmail.com");
+arbol.insertar(8, "gato","michiciudad", 11111111, "chito@gmail.com");
+arbol.insertar(17, "clicli", "clicliciudad", 8282373, "cuicui@gmail.com");
+arbol.insertar(14,"clarisa", "clarisondia",8273940, "clarisondia@gmail.com");
 console.log("***PUPO PREORDEN***");
 arbol.preorden(arbol.raiz);
 console.log("\n***PUPO INORDEN***");
