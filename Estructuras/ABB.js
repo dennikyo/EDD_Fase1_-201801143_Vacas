@@ -17,7 +17,7 @@ class abb{
     }
 
     insertar(valor){
-        nuevo = nodo(valor);
+        let nuevo = new nodo(valor);
 
         if(this.raiz == null){
             this.raiz= nuevo;
@@ -45,4 +45,49 @@ class abb{
             return raiz_actual;
         }
     }
+
+    preorden(raiz_actual){
+        if(raiz_actual !=null){
+        console.log(raiz_actual.id);
+        this.preorden(raiz_actual.izq);
+        this.preorden(raiz_actual.der);
+
+
+    }
 }
+
+    inorden(raiz_actual){
+        if(raiz_actual != null){
+            this.inorden(raiz_actual.izq);
+            console.log(raiz_actual.id);
+            this.inorden(raiz_actual.der);
+
+        }
+    }
+
+    postorden(raiz_actual){
+        if(raiz_actual != null){
+            this.postorden(raiz_actual.izq);
+            this.postorden(raiz_actual.der);
+            console.log(raiz_actual.id);
+            
+
+        }
+    }
+
+
+
+}
+arbol = new abb();
+arbol.insertar(10);
+arbol.insertar(5);
+arbol.insertar(15);
+arbol.insertar(7);
+console.log("***PUPO PREORDEN***");
+arbol.preorden(arbol.raiz);
+console.log("\n***PUPO INORDEN***");
+arbol.inorden(arbol.raiz);
+console.log("\n***PUPO POSTORDEN***");
+arbol.postorden(arbol.raiz);
+
+

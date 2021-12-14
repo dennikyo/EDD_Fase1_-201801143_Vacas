@@ -7,7 +7,7 @@
     <title>Admin</title>
 </head>
 <style>
-body{
+        body{
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -19,7 +19,7 @@ body{
 }
 .main{
 	width: 750px;
-	height: 850px;
+	height: 750px;
 	background: red;
 	overflow: hidden;
 	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
@@ -37,7 +37,7 @@ body{
 }
 input{
 	width: 60%;
-	height: 30px;
+	height: 20px;
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
@@ -69,6 +69,7 @@ button:hover{
 }
 </style>
 <body>
+    <body>
         <div class="main">  	
     
                 <div class="Administracion de clientes">
@@ -80,30 +81,15 @@ button:hover{
                         <button>Registrar</button>
                     </form>
                 </div>
-				<div class="login">
-					<form name="form" action="Inicio sesion">
-						<label for="chk" aria-hidden="true">Login</label>
-						<p>Usuario: <input type=text name=login>
-						<p>Pass: <input type=password name=password>
-						<input onclick=ir() type=button value="INICIAR">
-					</form>
-				</div>
+                <div class="login">
+                    <form>
+                        <label for="chk" aria-hidden="true">Mi perfil</label>
+                        <button href="" name="Calendario"> Calendario</button>
+                        <button name="cerrar sesion "> Cerrar sesion</button>
+                        
+                    </form>
+                </div>
         </div>
     </body>
-<script >
-	
-function ir(){
-
-var c=1234;
-var u="Admin";
-	
-	if(document.form.password.value==c && document.form.login.value == u){
-			alert("Bienvenido");
-			window.location = "Registro_Cliente.html";
-		}
-	else{
-	alert("Porfavor ingresa el nombre u usuario correctos.");
-		}
-}
-</script>
+</body>
 </html>
