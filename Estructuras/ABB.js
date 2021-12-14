@@ -75,6 +75,47 @@ class abb{
         }
     }
 
+    GenerarDot(){
+        let cadena = "digraph arbol {\n";
+        cadena+= this.Generar_Nodos(this.raiz);
+        cadena+= "\n";
+        cadena+= this.Enlazar_Nodos(this.raiz);
+        cadena+="\n}";
+
+        console.log(cadena);
+
+    }
+
+    Generar_Nodos(raiz_actual){ //copia del metodo preorden jeje xd
+        let nodos = "";
+        if(raiz_actual != null){
+            nodos+= "n" + raiz_actual.id + "[label=\""+raiz_actual.id+"\"]\n";
+            nodos+=this.Generar_Nodos(raiz_actual.izq);
+            nodos+=this.Generar_Nodos(raiz_actual.der);
+        }
+        return nodos;
+    }
+
+    Enlazar_Nodos(raiz_actual){
+
+        let cadena = "";
+        if(raiz_actual != null){
+            cadena += this.Enlazar_Nodos(raiz_actual.izq);
+            //Valindando para la izquierda
+            if(raiz_actual.izq != null){
+                cadena+= "n" +raiz_actual.id + "->" + "n" + raiz_actual.izq.id + "\n";
+            }
+            //Valindando para la izquierda
+            if(raiz_actual.der != null){
+                cadena+= "n" +raiz_actual.id + "->" + "n" + raiz_actual.der.id +"\n";
+            }
+
+            cadena +=this.Enlazar_Nodos(raiz_actual.der);
+
+        }
+        return cadena;
+    }
+
 
 
 }
@@ -89,5 +130,7 @@ console.log("\n***PUPO INORDEN***");
 arbol.inorden(arbol.raiz);
 console.log("\n***PUPO POSTORDEN***");
 arbol.postorden(arbol.raiz);
+
+arbol.GenerarDot();
 
 
