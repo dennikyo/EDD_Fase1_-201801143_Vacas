@@ -1,4 +1,4 @@
-class nodo{
+class nodo{ //Lista enlazada para los clientes :3
     constructor(id, nombre, correo){
         this.id = id;
         this.nombre = nombre;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Admin-Login</title>
 </head>
 <style>
 body{
@@ -70,22 +70,12 @@ button:hover{
 </style>
 <body>
         <div class="main">  	
-    
-                <div class="Administracion de clientes">
-                    <form>
-                        <label for="chk" aria-hidden="true">Administración de clientes</label>
-						<input type="number" placeholder="ID" required="">
-                        <input type="text" name="txt" placeholder="User name" required="">
-                        <input type="email" name="email" placeholder="Email" required="">
-                        <button>Registrar</button>
-                    </form>
-                </div>
 				<div class="login">
 					<form name="form" action="Inicio sesion">
 						<label for="chk" aria-hidden="true">Login</label>
 						<p>Usuario: <input type=text name=login>
 						<p>Pass: <input type=password name=password>
-						<input onclick=ir() type=button value="INICIAR">
+						<input onclick=ir() type=button value="INICIAR" style="color:#000;">
 					</form>
 				</div>
         </div>
@@ -94,16 +84,26 @@ button:hover{
 	
 function ir(){
 
+	//Admin data
 var c=1234;
 var u="Admin";
-	
+
+//cliente data
+var a=4321;
+var b="Cliente"
+
+
 	if(document.form.password.value==c && document.form.login.value == u){
-			alert("Bienvenido");
-			window.location = "Registro_Cliente.html";
+			alert("Bienvenido Admin");
+			window.location = "Mreportes.html";
+		}
+	else if(document.form.password.value==a && document.form.login.value == b){
+		alert("Bienvenido cliente");
+		window.location = "Cargar.html";
 		}
 	else{
-	alert("Porfavor ingresa el nombre u usuario correctos.");
-		}
+		alert("Usuario y password incorrectos por favor vuelva a intentarlo")
+	}
 }
 </script>
 </html>
