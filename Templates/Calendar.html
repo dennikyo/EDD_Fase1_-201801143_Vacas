@@ -82,23 +82,35 @@ background: #6d44b8;
             </div>
             <div>
                 <form>
-                    <input type="checkbox" id="chk" aria-hidden="true">
-                    <input type="text" name="textarea" placeholder=" Descripcion">
+                                        <input type="text" name="textarea" placeholder=" Descripcion">
+                    <button>Agregar</button>
+                    <button >Ver Calendario</button> 
                 </form>
             </div>
-        <button>Agregar</button>
-        <button >Ver Calendario</button> 
+        
 
         <div class="login">
             <form>
                 <label for="chk" aria-hidden="true">Mi perfil</label>
 
-                <button href="" name="Administracion de clientes"> Administracion de clientes</button>
-                <button name="cerrar sesion "> Cerrar sesion</button>
+                <button onclick="abrir()"> Administracion de clientes</button>
+                <button onclick="cerrar()"> Cerrar sesion</button>
                 
             </form>
         </div>
 
     </div>
 </body>
+
+<script> 
+    function abrir(){
+        miventana = self.open("Registro_Cliente.html");
+        miventana_2 = self.close("Calendar.html");
+    }
+    
+    function cerrar(){
+        miventana = self.open("Login.html");
+        miventana2 = self.close("Registro_Cliente.html");
+    }
+    </script>
 </html>

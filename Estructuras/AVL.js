@@ -12,6 +12,7 @@ class nodo{
         this.izq = null;
         this.der = null;
         this.altura = 0;
+        this.lista_clientes = new listaDoble()
     }
 }
 
@@ -20,8 +21,8 @@ class avl{
         this.raiz = null;
     }
 
-    insertar(valor){
-        let nuevo = new nodo(valor);
+    insertar(vendor,nombre,edad,correo,password){
+        let nuevo = new nodo(vendor,nombre,edad,correo,password);
 
         if(this.raiz == null){
             this.raiz= nuevo;
@@ -38,13 +39,13 @@ class avl{
                 //validaciones
                 
                 if(this.altura(raiz_actual.der)-this.altura(raiz_actual.izq)==-2){
-                    console.log("entra a rotacion IZQUIERDA");
+                    //console.log("entra a rotacion IZQUIERDA");
                     //if(this.altura(raiz_actual.izq.der)-this.altura(raiz_actual.izq.izq))
                     if(nuevo.vendor < raiz_actual.izq.vendor){ //-1 ROTACION IZQUIERDA
-                        console.log("entra a rotacion IZQUIERDA IZQUIERDA");
+                        //console.log("entra a rotacion IZQUIERDA IZQUIERDA");
                         raiz_actual = this.r_izquierda(raiz_actual);
                     }else{ //1 ROTACION IZQ-DERECHA
-                        console.log("entra a rotacion IZQUIERDA DERECHA");
+                        //console.log("entra a rotacion IZQUIERDA DERECHA");
                         raiz_actual = this.r_izq_der(raiz_actual);
                     }
                 }
@@ -52,12 +53,12 @@ class avl{
                 raiz_actual.der = this.insertar_nodo(raiz_actual.der,nuevo);
                 //validaciones
                 if(this.altura(raiz_actual.der)-this.altura(raiz_actual.izq)==2){
-                    console.log("entra a rotacion DERECHA");
+                    //console.log("entra a rotacion DERECHA");
                     if(nuevo.vendor > raiz_actual.der.vendor){ // 1 ROTACION DERECHA
-                        console.log("entra a rotacion DERECHA DERECHA");
+                        //console.log("entra a rotacion DERECHA DERECHA");
                         raiz_actual=this.r_derecha(raiz_actual);
                     }else{//-1 ROTACION DERECHA IZQUIERDA
-                        console.log("entra a rotacion DERECHA IZQUIERDA");
+                        //console.log("entra a rotacion DERECHA IZQUIERDA");
                         raiz_actual = this.r_der_izq(raiz_actual);
                     }
                 }
@@ -137,9 +138,11 @@ class avl{
     inOrden(raiz_actual){
         if(raiz_actual != null){
             this.inOrden(raiz_actual.izq);
-            console.log(raiz_actual.vendor);
-            console.log("altura= "+(this.altura(raiz_actual.der)-this.altura(raiz_actual.iz)))
+            console.log(raiz_actual.vendor,raiz_actual.nombre,raiz_actual.edad,raiz_actual.correo, raiz_actual.password);
+            //console.log("altura= "+(this.altura(raiz_actual.der)-this.altura(raiz_actual.iz)))
+            console.log(raiz_actual.lista_clientes.mostrar())
             this.inOrden(raiz_actual.der);
+            
         }
     }
 
@@ -188,27 +191,118 @@ class avl{
         }
         return cadena;
     }
+
+    metodo_buscar(vendor){
+        if(this.raiz == null){
+            return null
+        }else{
+            return this.buscar_recursivo(vendor, this.raiz)
+        }
+
+    }
+    buscar_recursivo(vendor, nodo_auxiliar){
+        if(vendor === nodo_auxiliar.vendor){
+            return nodo_auxiliar
+        }else if(vendor > nodo_auxiliar.vendor && nodo_auxiliar.der != null){
+            return this.buscar_recursivo(vendor, nodo_auxiliar.der)
+        }else if(vendor < nodo_auxiliar.vendor && nodo_auxiliar.izq != null){
+            return this.buscar_recursivo(vendor, nodo_auxiliar.izq)
+        }else{ 
+            return null
+        }
+    }
+
+    inner_costumer(vendor,id, nombre, correo){ //Este método lo hago para insertar un cliente en efecto xd
+        let verificar = this.metodo_buscar(vendor)
+        //console.log(verificar)
+        if(verificar != null){
+            verificar.lista_clientes.insertar(id,nombre,correo)
+        
+
+        }else{
+            console.log("No encontrado", vendor)
+        }
+
+    }
 }
+
+/******************************************************************************************************* */
+
+class nodo_lista{ //Lista enlazada para los clientes :3
+    constructor(id, nombre, correo){
+        this.id = id;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.siguiente = null;
+        this.anterior = null;
+    }
+}
+class listaDoble{
+    constructor(){
+        this.primero = null;
+    }
+
+    insertar(id,nombre, correo){
+        let nuevo = new nodo_lista(id, nombre, correo); 
+
+        if(this.primero == null){ //la lista esta vacia
+            this.primero = nuevo;
+        }else{
+            let aux = this.primero;
+            while(aux.siguiente != null){
+                aux = aux.siguiente;
+            };
+            aux.siguiente = nuevo;
+            nuevo.anterior = aux;
+        }
+    }
+
+    mostrar(){
+        let aux = this.primero;
+        console.log(" Mostar Lista ")
+        while(aux != null){
+            console.log("-> " + aux.id + " " +aux.nombre +" "+ aux.correo);
+            aux = aux.siguiente;
+        }
+    }
+}
+
+
+
+/*let lista = new listaDoble();
+lista.insertar(10, "gato", "pupo@gmail.com");
+lista.insertar(12, "Clicli", "chito@gmail.com");
+lista.mostrar();*/
+
+
+/*********************************************************************************************************** */
+
+
+
+
 
 arbol = new avl();
 
-arbol.insertar(30);
-arbol.insertar(40);
-arbol.insertar(20);
-arbol.insertar(10);
-arbol.insertar(5);
-arbol.insertar(70);
-arbol.insertar(7);
-arbol.insertar(100);
-arbol.insertar(35);
-arbol.insertar(49);
-arbol.insertar(19);
-arbol.insertar(56);
-arbol.insertar(51);
-arbol.insertar(60);
-arbol.insertar(65);
-arbol.insertar(94);
+arbol.insertar(5,"daniel", 23, "dani@gamail.com",890)
+arbol.insertar(70, "denisse", 22, "denisse@gmail.com",9044)
+arbol.insertar(30,"aaron",22,"papitajames@gmail.com",123)
+arbol.insertar(40, 'wendy', 50,"wendyi@gmail.com",89032)
+arbol.insertar(20,"clarisa",65,"clarisondia@gmail.com",2432)
+arbol.insertar(24,"majo",65,"majo@gmail.com",3457)
+arbol.insertar(2,"fer",10,"fer@gmail.com",3457)
+arbol.insertar(10,"anto",65,"anto@gmail.com",3457)
+arbol.insertar(80,"victor",2,"victor@gmail.com",3457)
+
+arbol.inner_costumer(70, 5, 'sergio',"ser@gmail.com")
+arbol.inner_costumer(70, 1, 'denisse',"dennise@gmail.com")
+arbol.inner_costumer(30, 5, 'sergio',"ser@gmail.com")
+arbol.inner_costumer(30, 3, 'dani',"dani@gmail.com")
+arbol.inner_costumer(5, 4, 'sergio',"ser@gmail.com")
+arbol.inner_costumer(5, 3, 'wendy',"wendy@gmail.com")
+arbol.inner_costumer(80, 4, 'sergio',"ser@gmail.com")
+arbol.inner_costumer(80, 1, 'majo',"majo@gmail.com")
 
 arbol.inOrden(arbol.raiz);
+//console.log(arbol.metodo_buscar(10));
 
-arbol.generarDot();
+//arbol.generarDot();

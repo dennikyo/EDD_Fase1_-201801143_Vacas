@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cargar</title>
+    <title>Reportes</title>
 </head>
 <style>
     body{
@@ -67,27 +67,43 @@ cursor: pointer;
 button:hover{
 background: #6d44b8;
 }
+
 </style>
 <body>
     <body>
         <div class="main">  	
     
-                <div class="Administracion de clientes">
+                <div>
                     <form>
                         <label for="chk" aria-hidden="true">Carga de Archivos </label>
-						<input type="file" placeholder="" required="">
-                        <button>Cargar Archivo</button>
+                        <button>Usuarios</button>
+                        <button>Proveedores</button>
+                        <button>Calendario</button>
+                        <button>Clientes</button>
+                        
                     </form>
                 </div>
                 <div class="login">
                     <form>
-                        <label for="chk" aria-hidden="true">Mi perfil</label>
-                        <button href="" name="Calendario"> Modulo de Reportes </button>
-                        <button name="cerrar sesion "> Cerrar sesion</button>
+                        <label for="chk" aria-hidden="true">ERP</label>
+                        <button onclick="abrir()">Registrar</button>
+                        <button  onclick="cerrar()" name="cerrar sesion "> Cerrar sesion</button>
                         
                     </form>
                 </div>
         </div>
     </body>
 </body>
+
+<script> 
+    function abrir(){
+        miventana = self.open("Registro_Admin.html");
+        miventana_2 = self.close("Reportes.html");
+    }
+    
+    function cerrar(){
+        miventana = self.open("Login.html");
+        miventana2 = self.close("Reportes.html");
+    }
+    </script>
 </html>

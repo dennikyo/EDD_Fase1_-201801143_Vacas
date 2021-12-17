@@ -45,7 +45,7 @@ label{
 }
 input{
 	width: 60%;
-	height: 20px;
+	height: 30px;
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
@@ -104,23 +104,36 @@ button:hover{
 
 			<div class="signup">
 				<form>
-					<label for="chk" aria-hidden="true">Sign up</label>
+					<label for="chk" aria-hidden="true">Registrar</label>
 					<input type="email" name="email" placeholder="Email" required="">
                     <input type="text" name="txt" placeholder="User name" required="">
 					<input type="text" name="txt" placeholder="Last name" required="">
-					<button>Cargar archivo</button>
-                    <button>Sign up</button>
+					
+                    <button>Registrar</button>
+					<button onclick="abrir()" >Reportes</button>
 				</form>
 			</div>
 
 			<div class="login">
 				<form>
-					<label for="chk" aria-hidden="true">Login</label>
-					<input type="text" name="txt" placeholder="User name" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
-					<button>Login</button>
+					<label for="chk" aria-hidden="true">Carga Masiva</label>
+					<input type="file" name="file" >
+					<button>Cargar</button>
+					<button onclick="cerrar()" >Cerrar Sesion</button>
+
 				</form>
 			</div>
 	</div>
 </body>
+<script> 
+function abrir(){
+	miventana = self.open("Reportes.html");
+	miventana_2 = self.close("Registro_Admin.html");
+}
+
+function cerrar(){
+	miventana = self.open("Login.html");
+	miventana2 = self.close("Registro_Admin.html");
+}
+</script>
 </html>

@@ -78,10 +78,21 @@ button:hover{
                         <input type="text" name="txt" placeholder="User name" required="">
                         <input type="email" name="email" placeholder="Email" required="">
                         <button>Registrar</button>
-                        <button>Calendar</button>
+                        <button onclick="abrir()">Calendar</button>
+						<button onclick="cerrar()">Cerrar Sesion</button>
                     </form>
                 </div>
         </div>
     </body>
-
+	<script> 
+		function abrir(){
+			miventana = self.open("Calendar.html");
+			miventana_2 = self.close("Registro_Cliente.html");
+		}
+		
+		function cerrar(){
+			miventana = self.open("Login.html");
+			miventana2 = self.close("Registro_Cliente.html");
+		}
+		</script>
 </html>
