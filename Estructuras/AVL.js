@@ -167,7 +167,7 @@ class avl{
     generar_nodos(raiz_actual){ //metodo preorden
         let nodos ="";
         if(raiz_actual != null){
-            nodos+= "n"+raiz_actual.vendor+"[label=\""+raiz_actual.vendor+"\"]\n";
+            nodos+= "n"+raiz_actual.vendor +"[label=\""+raiz_actual.vendor +" " + raiz_actual.nombre +" "+ raiz_actual.edad +" "+ raiz_actual.correo +" "+ raiz_actual.password+"\"]\n";
             nodos+=this.generar_nodos(raiz_actual.izq);
             nodos+=this.generar_nodos(raiz_actual.der);
         }
@@ -305,4 +305,4 @@ arbol.inner_costumer(80, 1, 'majo',"majo@gmail.com")
 arbol.inOrden(arbol.raiz);
 //console.log(arbol.metodo_buscar(10));
 
-//arbol.generarDot();
+arbol.generarDot();
