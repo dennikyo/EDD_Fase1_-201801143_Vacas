@@ -13,6 +13,7 @@ class in_node{//Este es el nodo interno
 
         this.arriba = null;
         this.abajo = null;
+       
     }
 }
 
@@ -316,20 +317,167 @@ class matriz{
 
 
 
-
-
     /*********************************************************** */
 
 
 }
 
-let matriz1 = new matriz();
 
-matriz1.insertar(5,1,4);
-matriz1.insertar(6,2,8);
-matriz1.insertar(1,10,1);
-matriz1.insertar(2,1,2);
-matriz1.insertar(7,3,3);
+// LISTA DE MESES
+class nodo_meses{
+    constructor(mes){
+        this.mes = mes;
+        this.siguiente = null;
+        this.anterior = null;
+        this.matriz = new matriz() //Matriz
+    }
+}
+
+class listaDoble_meses{
+    constructor(){
+        this.primero = null;
+        
+
+        
+    }
+
+    insertar(mes){
+        let nuevo = new nodo_meses(mes)
+            if (this.primero == null) {
+                this.primero = nuevo
+            } else {
+                if (nuevo.mes < this.primero.mes) {
+                    nuevo.siguiente = this.primero
+                    this.primero.anterior = nuevo
+                    this.primero = nuevo
+                } else {
+                    let aux = this.primero
+                    while (aux != null) {
+                        if (nuevo.mes < aux.mes) {
+                            nuevo.siguiente = aux
+                            nuevo.anterior = aux.anterior
+                            aux.anterior.siguiente = nuevo
+                            aux.anterior = nuevo
+                            break
+                        } else if (nuevo.mes === aux.mes) {
+                            console.log("El mes ya esta en uso", aux.mes)
+                            break
+                        } else {
+                            if (aux.siguiente == null) {
+                                aux.siguiente = nuevo
+                                nuevo.anterior = aux
+                                break
+                            } else {
+                                aux = aux.siguiente
+                            }
+                        }
+                    }
+                }
+            }
+    }
+
+    mostrar(){
+        let aux = this.primero;
+        console.log(" Mostrar Lista ")
+        while(aux != null){
+            console.log(aux.mes)
+            aux.matriz.graficar_matriz()
+            aux = aux.siguiente;
+
+        }
+    }
+    
+    insertar_evento(evento,dia,hora,mes){
+        let aux = this.primero;
+        while(aux != null){
+            //console.log(aux.mes,mes)
+            if(aux.mes == mes){
+        
+                //aux.matriz.insertar(evento,dia,hora)
+                //console.log("PUPO")
+                aux.matriz.insertar(evento,dia,hora)
+                return 
+
+            }else{
+                aux = aux.siguiente;
+                
+            }
+            
+        }
+        
+        return console.log("Nodo no encontrado")  
+
+    }
 
 
-matriz1.graficar_matriz();
+    busqueda(mes){
+        let aux = this.primero;
+        
+        while(aux != null){
+            if(aux.mes == mes){
+                return true
+            }else{
+            aux = aux.siguiente;
+        }
+    }   return false
+    
+    }
+}
+
+
+
+
+/************************************************************************ */
+
+
+
+let d  = new listaDoble_meses();
+/*prueba.insertar(6)
+prueba.insertar(7)
+prueba.insertar(8)
+prueba.insertar(9)
+prueba.insertar(10)
+prueba.insertar_evento("evetn",2,6,6)
+prueba.insertar_evento("evet1",3,1,7)
+prueba.insertar_evento("evet2",4,2,8)
+prueba.insertar_evento("evet3",5,3,9)
+prueba.insertar_evento("evet4",6,5,10)
+prueba.mostrar()*/
+
+
+/*arbol.insertar(3)
+arbol.insertar(2)
+arbol.insertar(4)
+arbol.insertar(3)
+arbol.insertar(1)
+arbol.insertar(9)
+
+
+arbol.insertar_evento("hola",3,5,3)
+arbol.insertar_evento("dias",4,1,4)
+arbol.insertar_evento("buenas",3,1,3)
+arbol.insertar_evento("sadjfln lkdfmg lflkmgsl pd",2,3,4)
+arbol.insertar_evento( "que",10,1,5)
+arbol.insertar_evento("bye",1,2,1)
+arbol.insertar_evento("fkla",5,3,2)
+arbol.insertar_evento("fkla",8,3,9)
+*/
+
+
+
+d.insertar(3)
+d.insertar(8)
+d.insertar(5)
+d.insertar_evento("pupoevento",3,5,3)
+d.insertar_evento("pupo",4,1,8)
+
+d.insertar_evento("vento",1,1,8)
+
+d.insertar_evento("qwpqwh",2,3,8)
+
+d.insertar_evento("cuascuas",10,1,8)
+
+d.insertar_evento("miaumiau",1,2,5)
+
+d.insertar_evento("pupoevento",3,3,8) 
+d.mostrar()

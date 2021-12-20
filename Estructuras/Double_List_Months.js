@@ -12,18 +12,38 @@ class listaDoble{
     }
 
     insertar(mes){
-        let nuevo = new nodo(mes); 
-
-        if(this.primero == null){ //la lista esta vaciaxd
-            this.primero = nuevo;
-        }else{
-            let aux = this.primero;
-            while(aux.siguiente != null){
-                aux = aux.siguiente;
-            };
-            aux.siguiente = nuevo;
-            nuevo.anterior = aux;
-        }
+        let nuevo = new nodo(mes)
+            if (this.primero == null) {
+                this.primero = nuevo
+            } else {
+                if (nuevo.mes < this.primero.mes) {
+                    nuevo.siguiente = this.primero
+                    this.primero.anterior = nuevo
+                    this.primero = nuevo
+                } else {
+                    let aux = this.primero
+                    while (aux != null) {
+                        if (nuevo.mes < aux.mes) {
+                            nuevo.siguiente = aux
+                            nuevo.anterior = aux.anterior
+                            aux.anterior.siguiente = nuevo
+                            aux.anterior = nuevo
+                            break
+                        } else if (nuevo.mes === aux.mes) {
+                            console.log("El mes ya esta en uso", aux.mes)
+                            break
+                        } else {
+                            if (aux.siguiente == null) {
+                                aux.siguiente = nuevo
+                                nuevo.anterior = aux
+                                break
+                            } else {
+                                aux = aux.siguiente
+                            }
+                        }
+                    }
+                }
+            }
     }
 
     mostrar(){
@@ -40,6 +60,8 @@ let lista = new listaDoble();
 
 lista.insertar(1);
 lista.insertar(2);
-lista.insertar(3);
+lista.insertar(1);
+
 lista.insertar(4);
+lista.insertar(2);
 lista.mostrar();
