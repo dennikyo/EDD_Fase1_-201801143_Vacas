@@ -36,10 +36,40 @@ class listaDoble{
         }
     }
 }
-
-
-
 let lista = new listaDoble();
+
+
+function insertar_data(){
+
+    let nuevo_valor = document.getElementById('nuevo').value;
+    console.log(nuevo_valor)
+    lista.insertar(nuevo_valor);
+    document.getElementById('nuevo').value;
+    let valor_numero = document.getElementById('numb').value;
+    console.log(valor_numero);
+    lista.insertar(valor_numero);
+    document.getElementById('numb').value;
+    let valor_email = document.getElementById('emal').value;
+    console.log(valor_email);
+    lista.insertar(valor_email);
+    document.getElementById('emal').value;
+    lista.mostrar();
+
+
+
+    //console.log("nuevo->" +nuevo_valor  )
+    //console.log("correo->" + valor_email)
+    //console.log("numero->"+  valor_numero)
+}
+function imprimir(){
+    lista.mostrar()
+
+}
+
+
+
+
+/**
 lista.insertar(10, "gato", "pupo@gmail.com");
 lista.insertar(12, "Clicli", "chito@gmail.com");
-lista.mostrar();
+lista.mostrar();**/

@@ -74,15 +74,62 @@ button:hover{
                 <div class="Administracion de clientes">
                     <form>
                         <label for="chk" aria-hidden="true">Administración de clientes</label>
-						<input type="number" placeholder="ID" required="">
-                        <input type="text" name="txt" placeholder="User name" required="">
-                        <input type="email" name="email" placeholder="Email" required="">
-                        <button>Registrar</button>
-                        <button onclick="abrir()">Calendar</button>
+						<input type="number" name="num"placeholder="ID" required="" id="numb">
+                        <input type="text" name="txt" placeholder="User name" required="" id="nuevo" >
+                        <input type="email" name="email" placeholder="Email" required="" id="emal">
+                        <button type="button" onclick="insertar_data()" >Registrar</button>
+                        
 						<button onclick="cerrar()">Cerrar Sesion</button>
+						<label for="chk" aria-hidden="true">Carga Masiva</label>
+						<input type="file" id="file-input" />
+						<h3>Contenido del archivo:</h3>
+						<pre id="contenido-archivo"></pre>
+						<button>Cargar</button>
                     </form>
                 </div>
         </div>
+
+		<div class="main">  	
+
+            <div class="Administracion de clientes">
+                <form>
+                    <label for="chk" aria-hidden="true">Calendario</label>
+                    <input type="month" name="mes" placeholder="Mes" required="">
+                    <input type="number" name="dia" placeholder="Dia" required="">
+                    <input type="number" placeholder="Hora" required="">
+                </form>
+            </div>
+            <div>
+                <form>
+                                        <input type="text" name="textarea" placeholder=" Descripcion">
+                    <button>Agregar</button>
+                    <button >Ver Calendario</button> 
+					<label for="chk" aria-hidden="true">Carga Masiva</label>
+					<pre id="contenido-archivo"></pre>
+					<input type="file" name="filee" >
+					<button >Cargar</button>
+					 
+                </form>
+            </div>
+        
+
+        <div class="login">
+            <form>
+                <label for="chk" aria-hidden="true">Mi perfil</label>
+
+                <button onclick="abrir()"> Administracion de clientes</button>
+                <button onclick="cerrar()"> Cerrar sesion</button>
+				<label for="chk" aria-hidden="true">Carga Masiva</label>
+				<input type="file" name="file" >
+				<button>Cargar</button>
+				
+            </form>
+        </div>
+
+    </div>
+	
+
+
     </body>
 	<script> 
 		function abrir(){
@@ -95,4 +142,8 @@ button:hover{
 			miventana2 = self.close("Registro_Cliente.html");
 		}
 		</script>
-</html>
+		<script src="../Estructuras/Double_List_Costumers.js"></script>
+		
+		
+
+		</html>

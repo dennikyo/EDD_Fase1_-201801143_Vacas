@@ -116,8 +116,10 @@ class abb{
         return cadena;
     }
 }
+
+
 arbol = new abb();
-arbol.insertar(10,"nombre","lamaya18", 123456,"pupo@gmail.com");
+/*arbol.insertar(10,"nombre","lamaya18", 123456,"pupo@gmail.com");
 arbol.insertar(5, "denisse", "duruelo52", 35249001, "denisse@gmail.com");
 arbol.insertar(15, "daniel", "colonialareformita", 192837,"zdani@gmail.com");
 arbol.insertar(7, "timytorner", "casttlewase", 12345678, "misca@gmail.com");
@@ -133,6 +135,55 @@ arbol.inorden(arbol.raiz);
 console.log("\n***PUPO POSTORDEN***");
 arbol.postorden(arbol.raiz);
 
-arbol.GenerarDot();
+arbol.GenerarDot();*/
 
+
+function lectura(e) {
+    var archivo = e.target.files[0];
+    if (!archivo) {
+      return;
+    }
+    let diccionario = ""
+    var lee = new FileReader();
+    lee.onload = function(e) {
+      var contenido = e.target.result;
+      const ms = JSON.stringify(contenido);
+      diccionario = JSON.parse(contenido)
+      let tamanio = diccionario.proveedores.length
+      try{
+          for(i=0; i<tamanio; i ++){
+              console.log(i)
+              console.log(diccionario['proveedores'][i]['id'])
+              console.log(diccionario['proveedores'][i]['nombre'])
+              console.log(diccionario['proveedores'][i]['direccion'])
+              console.log(diccionario['proveedores'][i]['telefono'])
+              console.log(diccionario['proveedores'][i]['correo'])
+              arbol.insertar(diccionario['proveedores'][i]['id'],diccionario['proveedores'][i]['nombre'],diccionario['proveedores'][i]['direccion'],diccionario['proveedores'][i]['telefono'],diccionario['proveedores'][i]['correo'])
+          }
+        
+      
+}catch(e){
+    window.alert(e)
+}
+
+
+
+      //mostrarContenido(contenido);
+    }
+    lee.readAsText(archivo);
+  }
+  
+  function muestra(contenido) {
+    var elemento = document.getElementById('contenido-archivo');
+    elemento.innerHTML = contenido;
+  }
+  
+  document.getElementById('file-input')
+    .addEventListener('change', lectura, false);
+
+function mostrando(){
+    arbol.GenerarDot();
+}
+
+    
 
