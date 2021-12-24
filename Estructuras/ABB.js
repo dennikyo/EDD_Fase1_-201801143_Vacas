@@ -116,6 +116,36 @@ class abb{
         return cadena;
     }
 }
+/**  // MÉTODO DE ELIMINAR FALLIDO 
+ * n delete(root,id_tree){
+        if( this.root == null){
+            return this.root
+        }
+        if(this.root.id > id_tree){
+            this.root.left = this.delete(this.root.left, id_tree)
+        }else if(this.root.id < id_tree){
+            this.root.right = this.delete(this.root.right, id_tree)
+        }else{
+            if(this.root.right != null){
+                return this.root.left
+            }
+            if( this.root.left != null){
+                return this.root.right
+            }
+            let temp = this.root.right
+
+            let val = temp.id
+            while (temp.left){
+                temp = temp?.left
+                val = temp.id
+            }
+            root.right = this.delete(root.right,root.id)
+
+        }
+        return root
+    }
+ * 
+ */
 
 
 arbol = new abb();
@@ -152,12 +182,12 @@ function lectura(e) {
       let tamanio = diccionario.proveedores.length
       try{
           for(i=0; i<tamanio; i ++){
-              console.log(i)
+              /*console.log(i)
               console.log(diccionario['proveedores'][i]['id'])
               console.log(diccionario['proveedores'][i]['nombre'])
               console.log(diccionario['proveedores'][i]['direccion'])
               console.log(diccionario['proveedores'][i]['telefono'])
-              console.log(diccionario['proveedores'][i]['correo'])
+              console.log(diccionario['proveedores'][i]['correo'])*/
               arbol.insertar(diccionario['proveedores'][i]['id'],diccionario['proveedores'][i]['nombre'],diccionario['proveedores'][i]['direccion'],diccionario['proveedores'][i]['telefono'],diccionario['proveedores'][i]['correo'])
           }
         

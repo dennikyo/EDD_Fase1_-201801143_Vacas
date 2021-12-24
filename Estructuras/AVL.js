@@ -773,7 +773,7 @@ arbol.insertar_evento("fkla",8,3,9)
 
 
 
-d.insertar(3)
+/*d.insertar(3)
 d.insertar(8)
 d.insertar(5)
 d.insertar_evento("pupoevento",3,5,3)
@@ -788,7 +788,7 @@ d.insertar_evento("cuascuas",10,1,8)
 d.insertar_evento("miaumiau",1,2,5)
 
 d.insertar_evento("pupoevento",3,3,8) 
-d.mostrar()
+d.mostrar()*/
 
 
 /*************************************************** */
@@ -811,7 +811,7 @@ lista.mostrar();*/
 
 arbol = new avl();
 //vendor,nombre,edad,correo,password
-arbol.insertar(50,"daniel", 23, "dani@gamail.com",890)
+/*arbol.insertar(50,"daniel", 23, "dani@gamail.com",890)
 arbol.insertar(10, "denisse", 22, "denisse@gmail.com",9044)
 arbol.insertar(60,"aaron",22,"papitajames@gmail.com",123)
 arbol.insertar(20, 'wendy', 50,"wendyi@gmail.com",89032)
@@ -855,5 +855,51 @@ arbol.inner_event(90,9,"fkla",3,3)
 
 arbol.inOrden(arbol.raiz);
 
-//console.log(arbol.metodo_buscar(10));
+//console.log(arbol.metodo_buscar(10));*/
 
+
+/************************** CARGA MASIVA***************************** */
+function lectura(e) {
+    var archivo = e.target.files[0];
+    if (!archivo) {
+      return;
+    }
+    let diccionario = ""
+    var lee = new FileReader();
+    lee.onload = function(e) {
+      var contenido = e.target.result;
+      const ms = JSON.stringify(contenido);
+      diccionario = JSON.parse(contenido)
+      let tamanio = diccionario.vendedores.length
+      //let eve = diccionario.vendedores.eventos.length
+      try{
+          for(i=0; i<tamanio; i ++){
+            console.log(diccionario['vendedores'][i]['id'])
+            //let eve =diccionario['vendedores'][i]['id'].length
+            /*for(x=0; x<eve; x++){
+               console.log('mes',diccionario['vendedores'][i]['eventos'][x]['mes'])
+               
+            } */
+              
+          }
+        
+      
+}catch(e){
+    window.alert(e)
+}
+      //mostrarContenido(contenido);
+    }
+    lee.readAsText(archivo);
+  }
+  
+  function muestra(contenido) {
+    var elemento = document.getElementById('data-clientes');
+    elemento.innerHTML = contenido;
+  }
+  
+  document.getElementById('clientes-input')
+    .addEventListener('change', lectura, false);
+
+function mostrando(){
+    d.mostrar();
+}

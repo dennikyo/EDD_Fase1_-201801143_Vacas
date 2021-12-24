@@ -432,6 +432,7 @@ class listaDoble_meses{
 
 
 let d  = new listaDoble_meses();
+
 /*prueba.insertar(6)
 prueba.insertar(7)
 prueba.insertar(8)
@@ -465,7 +466,7 @@ arbol.insertar_evento("fkla",8,3,9)
 
 
 
-d.insertar(3)
+/*d.insertar(3)
 d.insertar(8)
 d.insertar(5)
 d.insertar_evento("pupoevento",3,5,3)
@@ -480,4 +481,54 @@ d.insertar_evento("cuascuas",10,1,8)
 d.insertar_evento("miaumiau",1,2,5)
 
 d.insertar_evento("pupoevento",3,3,8) 
-d.mostrar()
+d.mostrar()*/
+
+
+/************************** CARGA MASIVA***************************** */
+function lectura(e) {
+    var archivo = e.target.files[0];
+    if (!archivo) {
+      return;
+    }
+    let diccionario = ""
+    var lee = new FileReader();
+    lee.onload = function(e) {
+      var contenido = e.target.result;
+      const ms = JSON.stringify(contenido);
+      diccionario = JSON.parse(contenido)
+      let tamanio = diccionario.vendedores.length
+      //let eve = diccionario.vendedores.eventos.length
+      try{
+          for(i=0; i<tamanio; i ++){
+            //console.log(diccionario['vendedores'][i]['id'])
+            let eve =diccionario['vendedores'][i]['eventos'].length
+            for(x=0; x<eve; x++){
+               console.log('mes',diccionario['vendedores'][i]['eventos'][x]['mes'])
+               console.log('dia',diccionario['vendedores'][i]['eventos'][x]['dia'])
+               console.log('hora',diccionario['vendedores'][i]['eventos'][x]['hora'])
+               console.log('desc',diccionario['vendedores'][i]['eventos'][x]['desc'])
+                d.insertar('mes',diccionario['vendedores'][i]['eventos'][x]['mes'],'dia',diccionario['vendedores'][i]['eventos'][x]['dia'],'hora',diccionario['vendedores'][i]['eventos'][x]['hora'],'desc',diccionario['vendedores'][i]['eventos'][x]['desc'])
+            } 
+              
+          }
+        
+      
+}catch(e){
+    window.alert(e)
+}
+      //mostrarContenido(contenido);
+    }
+    lee.readAsText(archivo);
+  }
+  
+  function muestra(contenido) {
+    var elemento = document.getElementById('data');
+    elemento.innerHTML = contenido;
+  }
+  
+  document.getElementById('calendar-input')
+    .addEventListener('change', lectura, false);
+
+function mostrando(){
+    d.mostrar();
+}

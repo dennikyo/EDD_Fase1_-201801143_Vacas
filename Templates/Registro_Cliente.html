@@ -20,9 +20,8 @@ body{
 .main{
 	width: 750px;
 	height: 850px;
-	background: red;
+	background: rgb(153, 0, 255);
 	overflow: hidden;
-	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
 	border-radius: 10px;
 	box-shadow: 5px 20px 50px #000;
 }label{
@@ -81,17 +80,17 @@ button:hover{
                         
 						<button onclick="cerrar()">Cerrar Sesion</button>
 						<label for="chk" aria-hidden="true">Carga Masiva</label>
-						<input type="file" id="file-input" />
+						<input type="file" id="clientes-input" />
 						<h3>Contenido del archivo:</h3>
-						<pre id="contenido-archivo"></pre>
-						<button>Cargar</button>
+						<pre id="data-clientes"></pre>
+						<button onclick="mostrando()">Cargar</button>
                     </form>
                 </div>
         </div>
 
 		<div class="main">  	
 
-            <div class="Administracion de clientes">
+            <div class="Calendario">
                 <form>
                     <label for="chk" aria-hidden="true">Calendario</label>
                     <input type="month" name="mes" placeholder="Mes" required="">
@@ -101,13 +100,15 @@ button:hover{
             </div>
             <div>
                 <form>
-                                        <input type="text" name="textarea" placeholder=" Descripcion">
+                    <input type="text" name="textarea" placeholder=" Descripcion">
                     <button>Agregar</button>
                     <button >Ver Calendario</button> 
-					<label for="chk" aria-hidden="true">Carga Masiva</label>
-					<pre id="contenido-archivo"></pre>
-					<input type="file" name="filee" >
-					<button >Cargar</button>
+					<input type="file" id="calendar-input"/>
+					<h3>Contenido del archivo:</h3>
+					<p id="data"></p>
+					<button onclick="mostrando()">Cargar</button>
+				
+					
 					 
                 </form>
             </div>
@@ -117,7 +118,7 @@ button:hover{
             <form>
                 <label for="chk" aria-hidden="true">Mi perfil</label>
 
-                <button onclick="abrir()"> Administracion de clientes</button>
+                <button > Administracion de clientes</button>
                 <button onclick="cerrar()"> Cerrar sesion</button>
 				<label for="chk" aria-hidden="true">Carga Masiva</label>
 				<input type="file" name="file" >
@@ -132,18 +133,15 @@ button:hover{
 
     </body>
 	<script> 
-		function abrir(){
-			miventana = self.open("Calendar.html");
-			miventana_2 = self.close("Registro_Cliente.html");
-		}
 		
 		function cerrar(){
 			miventana = self.open("Login.html");
 			miventana2 = self.close("Registro_Cliente.html");
 		}
 		</script>
-		<script src="../Estructuras/Double_List_Costumers.js"></script>
 		
 		
-
+		
+		<script src="../Estructuras/Dinamic_Matrix.js"></script>
+		<script src="../Estructuras/AVL.js"></script>
 		</html>
