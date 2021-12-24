@@ -76,12 +76,14 @@ button:hover{
 
 			<div class="">
 				<form>
-					<label for="chk" aria-hidden="true">Registrar</label>
-					<input type="email" name="email" placeholder="Email" required="">
-                    <input type="text" name="txt" placeholder="User name" required="">
-					<input type="text" name="txt" placeholder="Last name" required="">
-					
-                    <button>Registrar</button>
+					<label  aria-hidden="true">Registrar</label>
+					<input type="number" name="id" placeholder="id" id="id" >
+					<input type="text" name="nombre" placeholder="nombre" id = "nombre">
+                    <input type="text" name="direc" placeholder="direccion" id= "direccion">
+					<input type="number" name="tel" placeholder="telefono" id= "tel">
+					<input type="email" name="correc" placeholder="correo" id= "correo">
+					<button onclick="insertar_manual()">Registrarse</button>
+                    
 					
 					<button onclick="mostrando()" >Reportes</button>
 				</form>

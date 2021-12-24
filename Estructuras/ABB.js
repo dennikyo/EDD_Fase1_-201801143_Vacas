@@ -167,6 +167,25 @@ arbol.postorden(arbol.raiz);
 
 arbol.GenerarDot();*/
 
+function insertar_manual(){
+    var id = document.getElementById('id').value
+    var nombre =  document.getElementById('nombre').value
+    let direccion = document.getElementById('direccion').value
+    let telefono = document.getElementById('telefono').value
+    let correo = document.getElementById('correo').value
+
+    if(id!= "" && nombre!= "" && direccion!= "" && telefono!= "" && correo!=""){
+        console.log(id,nombre,direccion,telefono,correo)
+
+    }else{
+        window.alert("datos mal ingresados")
+    }
+
+}
+
+
+
+
 
 function lectura(e) {
     var archivo = e.target.files[0];
@@ -215,5 +234,5 @@ function mostrando(){
     arbol.GenerarDot();
 }
 
-    
+
 
