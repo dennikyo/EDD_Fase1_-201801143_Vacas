@@ -739,7 +739,54 @@ class listaDoble_meses{
 
 
 
-let d  = new listaDoble_meses();
+//let lista  = new listaDoble_meses();
+let arbol = new avl();
+
+let lista = new listaDoble();
+
+
+lista.insertar(12,"fnio","dshfuirf@gmail.com")
+lista.insertar(12,"fdffo","dshfuirf@gmail.com")
+lista.insertar(22,"fnrfgr","dshfuirf@gmail.com")
+lista.insertar(13,"fnirgrv","dshfuirf@gmail.com")
+lista.mostrar()
+
+
+arbol.insertar(3)
+arbol.insertar(2)
+arbol.insertar(4)
+arbol.insertar(3)
+arbol.insertar(1)
+arbol.insertar(9)
+
+arbol.insertar(50,"daniel", 23, "dani@gamail.com",890)
+arbol.insertar(10, "denisse", 22, "denisse@gmail.com",9044)
+arbol.insertar(60,"aaron",22,"papitajames@gmail.com",123)
+arbol.insertar(20, 'wendy', 50,"wendyi@gmail.com",89032)
+arbol.insertar(70,"clarisa",65,"clarisondia@gmail.com",2432)
+arbol.insertar(30,"majo",65,"majo@gmail.com",3457)
+arbol.insertar(80,"fer",10,"fer@gmail.com",3457)
+arbol.insertar(40,"anto",65,"anto@gmail.com",3457)
+arbol.insertar(90,"victor",2,"victor@gmail.com",3457)
+arbol.insertar(85,"gato",22,"coceh@gmail.com", 123)
+
+
+arbol.inner_costumer(30, 8, 'sergio',"ser@gmail.com")
+arbol.inner_costumer(70, 1, 'denisse',"dennise@gmail.com")
+arbol.inner_costumer(30, 5, 'sergio',"ser@gmail.com")
+arbol.inner_costumer(60, 3, 'dani',"dani@gmail.com")
+arbol.inner_costumer(90, 4, 'sergio',"ser@gmail.com")
+arbol.inner_costumer(20, 3, 'wendy',"wendy@gmail.com")
+arbol.inner_costumer(80, 4, 'sergio',"ser@gmail.com")
+arbol.inner_costumer(80, 1, 'majo',"majo@gmail.com")
+arbol.inner_costumer(20, 1, 'majo',"majo@gmail.com")
+
+
+//arbol.generarDot();
+
+
+
+
 /*prueba.insertar(6)
 prueba.insertar(7)
 prueba.insertar(8)
@@ -750,10 +797,10 @@ prueba.insertar_evento("evet1",3,1,7)
 prueba.insertar_evento("evet2",4,2,8)
 prueba.insertar_evento("evet3",5,3,9)
 prueba.insertar_evento("evet4",6,5,10)
-prueba.mostrar()*/
+prueba.mostrar()
 
 
-/*arbol.insertar(3)
+arbol.insertar(3)
 arbol.insertar(2)
 arbol.insertar(4)
 arbol.insertar(3)
@@ -769,11 +816,11 @@ arbol.insertar_evento( "que",10,1,5)
 arbol.insertar_evento("bye",1,2,1)
 arbol.insertar_evento("fkla",5,3,2)
 arbol.insertar_evento("fkla",8,3,9)
-*/
 
 
 
-/*d.insertar(3)
+
+d.insertar(3)
 d.insertar(8)
 d.insertar(5)
 d.insertar_evento("pupoevento",3,5,3)
@@ -788,7 +835,7 @@ d.insertar_evento("cuascuas",10,1,8)
 d.insertar_evento("miaumiau",1,2,5)
 
 d.insertar_evento("pupoevento",3,3,8) 
-d.mostrar()*/
+d.mostrar()
 
 
 /*************************************************** */
@@ -796,8 +843,8 @@ d.mostrar()*/
 /*let lista = new listaDoble();
 lista.insertar(10, "gato", "pupo@gmail.com");
 lista.insertar(12, "Clicli", "chito@gmail.com");
-lista.mostrar();*/
-
+lista.mostrar();
+*/
 
 /*********************************************************************************************************** */
 
@@ -809,7 +856,7 @@ lista.mostrar();*/
 /******************************************************************** */
 
 
-arbol = new avl();
+
 //vendor,nombre,edad,correo,password
 /*arbol.insertar(50,"daniel", 23, "dani@gamail.com",890)
 arbol.insertar(10, "denisse", 22, "denisse@gmail.com",9044)
@@ -831,13 +878,13 @@ arbol.inner_costumer(80, 4, 'sergio',"ser@gmail.com")
 arbol.inner_costumer(80, 1, 'majo',"majo@gmail.com")
 arbol.inner_costumer(20, 1, 'majo',"majo@gmail.com")
 
-//inner_costumer(vendor,id, nombre, correo)
-//insertar_evento(vendor,mes,evento,dia,hora)
+inner_costumer(vendor,id, nombre, correo)
+insertar_evento(vendor,mes,evento,dia,hora)*/
 
 
 //arbol.insertar_mes(20, 3)
  
-arbol.inner_mes(20,2)
+/*arbol.inner_mes(20,2)
 arbol.inner_mes(80,4)
 arbol.inner_mes(90,3)
 arbol.inner_mes(80,1)
@@ -855,10 +902,10 @@ arbol.inner_event(90,9,"fkla",3,3)
 
 arbol.inOrden(arbol.raiz);
 
-//console.log(arbol.metodo_buscar(10));*/
+console.log(arbol.metodo_buscar(10));*/
 
 
-/************************** CARGA MASIVA***************************** */
+/************************** CARGA MASIVA***************************** 
 function lectura(e) {
     var archivo = e.target.files[0];
     if (!archivo) {
@@ -879,7 +926,7 @@ function lectura(e) {
             /*for(x=0; x<eve; x++){
                console.log('mes',diccionario['vendedores'][i]['eventos'][x]['mes'])
                
-            } */
+            } 
               
           }
         
@@ -903,3 +950,4 @@ function lectura(e) {
 function mostrando(){
     d.mostrar();
 }
+*/

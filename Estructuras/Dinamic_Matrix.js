@@ -432,6 +432,18 @@ class listaDoble_meses{
 
 
 let d  = new listaDoble_meses();
+let prueba = new matriz();
+
+prueba.insertar("evento",12,3,1)
+prueba.insertar("cdd",7,89,109)
+prueba.insertar("hdk",8,76,28)
+prueba.insertar("7637",999,736,78)
+prueba.insertar("uduhw",10,827,882)
+
+
+prueba.graficar_matriz()
+
+
 
 /*prueba.insertar(6)
 prueba.insertar(7)
@@ -485,7 +497,7 @@ d.mostrar()*/
 
 
 /************************** CARGA MASIVA***************************** */
-function lectura(e) {
+/*function lectura(e) {
     var archivo = e.target.files[0];
     if (!archivo) {
       return;
@@ -531,4 +543,4 @@ function lectura(e) {
 
 function mostrando(){
     d.mostrar();
-}
+}*/
