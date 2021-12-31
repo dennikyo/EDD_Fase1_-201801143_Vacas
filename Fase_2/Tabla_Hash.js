@@ -1,9 +1,12 @@
 
 /** TABLA HASH :O LOL */
-
+// La tabla hash almacena los parametros de: id_venta, nombre_vendedor, nombre del cliente y total de la venta
 class nodo{
-    constructor(dato){
-        this.dato = dato;
+    constructor(id_venta,nombre_vendedor,nombre_cliente, total_venta){
+        this.id_venta = id_venta;
+        this.nombre_vendedor = nombre_vendedor;
+        this.nombre_cliente = nombre_cliente;
+        this.total_venta = total_venta;
     }
 }
 
@@ -22,10 +25,10 @@ class hash{
         return claves;
     }
 
-    calcular_hash(dato){
+    calcular_hash(id_venta){ //,nombre_vendedor,nombre_cliente, total_venta
         //metodo de division
         let resultado=0;
-        resultado= dato % this.size;
+        resultado= id_venta % this.size; // agregar aqui o no agregar los parametros? o solo es sufieciente comparando el id
         return resultado;
     }
 
@@ -51,8 +54,8 @@ class hash{
 
     insertar(nuevo){
         
-        let indice = this.calcular_hash(nuevo.dato);
-
+        let indice = this.calcular_hash(nuevo.id_venta, nuevo.nombre_vendedor, nuevo.nombre_cliente, nuevo.total_venta);
+        //Aqui arriba no se si es correcto agregar todos los parámetros o si sólo es necesario con el priemro del id
         //validaciones 
         if(this.claves[indice]==null){ //posicion disponible
             this.claves[indice] = nuevo;
@@ -104,7 +107,7 @@ class hash{
     recorrer(){
         for(var i =0;i<this.size;i++){
             if(this.claves[i]!=null){
-                console.log("-->"+this.claves[i].dato);
+                console.log("-->"+this.claves[i].id_venta+this.claves[i].nombre_vendedor+this.claves[i].nombre_cliente+this.claves[i].total_venta);
             }else{
                 console.log("------------");
             }
@@ -114,14 +117,14 @@ class hash{
 
 let tabla = new hash();
 
-tabla.insertar(new nodo(10));
-tabla.insertar(new nodo(8));
-tabla.insertar(new nodo(2));
-tabla.insertar(new nodo(9));
-tabla.insertar(new nodo(81));
-tabla.insertar(new nodo(12));
-tabla.insertar(new nodo(90));
-tabla.insertar(new nodo(181));
-tabla.insertar(new nodo(112));
-tabla.insertar(new nodo(190));
+tabla.insertar(new nodo(10,"pupo","licha",100));
+tabla.insertar(new nodo(8,"pupo","licha",100));
+tabla.insertar(new nodo(2,"pupo","licha",100));
+tabla.insertar(new nodo(9,"pupo","licha",100));
+tabla.insertar(new nodo(81,"pupo","licha",100));
+tabla.insertar(new nodo(12,"pupo","licha",100));
+tabla.insertar(new nodo(90,"pupo","licha",100));
+tabla.insertar(new nodo(181,"pupo","licha",100));
+tabla.insertar(new nodo(112,"pupo","licha",100));
+tabla.insertar(new nodo(190,"pupo","licha",100));
 tabla.recorrer();
