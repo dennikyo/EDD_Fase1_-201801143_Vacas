@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet"><link rel="stylesheet" href="../style/style_Login.css">
+
+
+    <title>Inventario</title>
+</head>
+<body onload="">
+    <div>
+            <form name="form" class="login">
+                <label for="chk" aria-hidden="true">Registrar Producto</label>
+                <input type="number" name="id" placeholder="ID" id="id">
+                <input type="text" name="nombre" placeholder="Nombre"  id="nombre">
+                <input type="number" name="precio" placeholder="Precio" id="precio">
+                <input type="number" name="cantidad" placeholder="Cantidad" id="cantidad">
+
+                <button onclick="insertar()" type=button style="color:rgb(255, 253, 253);">Registrar</button>
+                <p>Carga Masiva<input type="file" id="file-input" /></p>
+                <button onclick="mostrar()" type=button style="color:rgb(255, 253, 253);">Mostar Proveedores</button>
+
+
+                <button onclick="logout()" type=button style="color:rgb(255, 253, 253);">salir</button>
+
+            </form>
+    </div>
+
+
+
+
+    <script>
+        function redireccionar() {
+         miVentana = self.open("vendedor.html");
+         miventa2 = self.close("admin.html");
+        }
+
+        function logout(){
+        miventana = self.open("vendedor.html");
+        miventa2 = self.close("admin.html");
+        }
+    </script>
+
+    
+    <script src="../Fase_2/ArbolB.js"></script>
+
+
+
+
+</body>
+
+</html>

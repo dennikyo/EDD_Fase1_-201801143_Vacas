@@ -279,7 +279,7 @@ class Arbol_B{
         cadena+= this.graficar_nodos(this.raiz);
         cadena+=  this.graficar_enlaces(this.raiz);
         cadena+="}\n"
-
+        console.log(cadena);
         return cadena;
     }
     //Adaptar y agregar los parámetros a la función de graficar nombre,precio,cantidad porque id ya está
@@ -343,7 +343,7 @@ class Arbol_B{
 /************************************************************ */
 
 let arbol = new Arbol_B();
-arbol.insertar_nodo(5,"gato", 11,1);
+/**arbol.insertar_nodo(5,"gato", 11,1);
 arbol.insertar_nodo(1,"pez",33,23);
 arbol.insertar_nodo(7,"chucho",45,12);
 arbol.insertar_nodo(3,"perica",12,99);
@@ -363,4 +363,30 @@ arbol.insertar_nodo(150,"conejo",45,3);
 arbol.insertar_nodo(220,"conejo",45,3);
 arbol.insertar_nodo(325,"conejo",45,3);
 
-console.log(arbol.graficar());
+console.log(arbol.graficar()); **/
+
+function insertar(){
+    let id = document.getElementById('id').value;
+    let nombre = document.getElementById('nombre').value;
+    let precio = document.getElementById('precio').value;
+    let cantidad = document.getElementById('cantidad').value;
+
+    if(id!= ""){
+        arbol.insertar_nodo(id,nombre,precio,cantidad);
+        //console.log(id,nombre,precio,cantidad)
+        document.getElementById('id').value = ""; 
+        document.getElementById('nombre').value = "";
+        document.getElementById('precio').value = "";
+        document.getElementById('cantidad').value = "";    
+
+    }else{
+        window.alert("Insertar id");
+
+    }
+
+}
+
+function mostrar(){
+    arbol.graficar();
+
+}
