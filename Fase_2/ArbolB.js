@@ -2,9 +2,18 @@
 /**  ARBOL B  */
 //************************ Arbol B de orden 5 **************************/
 /*********************** Nodo Arbol B *************************/
+
+// El arbol B se utiliza para almacenar los datos del inventario
+// se almancenarán los parámetros 
+// Id, Nombre, Precio B) , Cantidad 
+
+//Sustituir el parametro id por todos los demás parámetros
 class nodoB{
-    constructor(dato){
-        this.dato = dato;
+    constructor(id,nombre,precio,cantidad){
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
         //apuntadores de lista - tipo nodoB
         this.siguiente = null; 
         this.anterior = null;
@@ -30,8 +39,8 @@ class lista_nodoB{
             this.size++;
             return true;
         }else{
-            if(this.primero == this.ultimo){ // solo hay un dato en la lista
-                if(nuevo.dato < this.primero.dato){
+            if(this.primero == this.ultimo){ // solo hay un id en la lista
+                if(nuevo.id < this.primero.id){
                     nuevo.siguiente = this.primero;
                     this.primero.anterior = nuevo;
                     //cambiar punteros de paginas
@@ -40,7 +49,7 @@ class lista_nodoB{
                     this.primero = nuevo;
                     this.size++;
                     return true;
-                }else if(nuevo.dato> this.ultimo.dato){
+                }else if(nuevo.id> this.ultimo.id){
                     this.ultimo.siguiente = nuevo;
                     nuevo.anterior = this.ultimo;
                     //cambiar punteros de paginas
@@ -49,12 +58,12 @@ class lista_nodoB{
                     this.ultimo = nuevo;
                     this.size++;
                     return true;
-                }else{ // el dato es igual al primero
-                    console.log("Ya existe un dato con ese valor en la lista");
+                }else{ // el id es igual al primero
+                    console.log("Ya existe un id con ese valor en la lista");
                     return false;
                 }
-            }else{ //hay mas de un dato
-                if(nuevo.dato < this.primero.dato){
+            }else{ //hay mas de un id
+                if(nuevo.id < this.primero.id){
                     nuevo.siguiente = this.primero;
                     this.primero.anterior = nuevo;
                     //cambiar punteros de paginas
@@ -63,7 +72,7 @@ class lista_nodoB{
                     this.primero = nuevo;
                     this.size++;
                     return true;
-                }else if(nuevo.dato> this.ultimo.dato){
+                }else if(nuevo.id> this.ultimo.id){
                     this.ultimo.siguiente = nuevo;
                     nuevo.anterior = this.ultimo;
                     //cambiar punteros de paginas
@@ -75,7 +84,7 @@ class lista_nodoB{
                 }else{
                     let aux = this.primero;
                     while(aux != null){
-                        if(nuevo.dato < aux.dato){
+                        if(nuevo.id < aux.id){
                             nuevo.siguiente = aux;
                             nuevo.anterior = aux.anterior;
                             // cambiar los punteros de las paginas
@@ -86,8 +95,8 @@ class lista_nodoB{
                             aux.anterior = nuevo;
                             this.size++;
                             return true;
-                        }else if(nuevo.dato == aux.dato){
-                            console.log("Ya existe un dato con ese valor en la lista");
+                        }else if(nuevo.id == aux.id){
+                            console.log("Ya existe un id con ese valor en la lista");
                             return false;
                         }else{
                             aux = aux.siguiente;
@@ -182,14 +191,14 @@ class Arbol_B{
         this.altura =0;
     }
 
-    insertar_nodo(dato){
-        let nuevo = new nodoB(dato);
+    insertar_nodo(id,nombre,precio,cantidad){
+        let nuevo = new nodoB(id,nombre,precio,cantidad);
         
         if(this.raiz == null){
             this.raiz = new pagina();
             this.raiz.raiz = true;
             this.raiz = this.raiz.insertar_EnPagina(nuevo);
-            //console.log("se inserto el valor "+this.raiz.claves.primero.dato);
+            //console.log("se inserto el valor "+this.raiz.claves.primero.id);
         }else{
             if(this.altura==0){
                 let respuesta = this.raiz.insertar_EnPagina(nuevo);
@@ -222,7 +231,7 @@ class Arbol_B{
             let respuesta = pagina_actual.insertar_EnPagina(nuevo);
             return respuesta;
         }else{
-            if(nuevo.dato < pagina_actual.claves.primero.dato){ // va a la izquierda
+            if(nuevo.id < pagina_actual.claves.primero.id){ // va a la izquierda
                 let respuesta = this.insertar_recorrer(nuevo,pagina_actual.claves.primero.izq);
                 if(respuesta instanceof nodoB){ // la pagina se dividio y el nodo se tiene que insertar en la pagina actual
                     return pagina_actual.insertar_EnPagina(respuesta);
@@ -230,7 +239,7 @@ class Arbol_B{
                     pagina_actual.claves.primero.izq = respuesta;
                     return pagina_actual;
                 }
-            }else if(nuevo.dato > pagina_actual.claves.ultimo.dato){ // va a la derecha porque es mayor al ultimo
+            }else if(nuevo.id > pagina_actual.claves.ultimo.id){ // va a la derecha porque es mayor al ultimo
                 let respuesta = this.insertar_recorrer(nuevo,pagina_actual.claves.ultimo.der);
                 if(respuesta instanceof nodoB){ // la pagina se dividio y el nodo se tiene que insertar en la pagina actual
                     return pagina_actual.insertar_EnPagina(respuesta);
@@ -242,7 +251,7 @@ class Arbol_B{
                 let aux = pagina_actual.claves.primero;
 
                 while(aux != null){
-                    if(nuevo.dato < aux.dato){
+                    if(nuevo.id < aux.id){
                         let respuesta = this.insertar_recorrer(nuevo, aux.izq);
                         if(respuesta instanceof nodoB){ // la pagina se dividio y el nodo se tiene que insertar en la pagina actual
                             return pagina_actual.insertar_EnPagina(respuesta);
@@ -251,7 +260,7 @@ class Arbol_B{
                             aux.anterior.der = respuesta;
                             return pagina_actual;
                         }
-                    }else if(nuevo.dato == aux.dato){
+                    }else if(nuevo.id == aux.id){
                         return pagina_actual;
                     }else{
                         aux = aux.siguiente;
@@ -273,6 +282,7 @@ class Arbol_B{
 
         return cadena;
     }
+    //Adaptar y agregar los parámetros a la función de graficar nombre,precio,cantidad porque id ya está
 
     graficar_nodos(raiz_actual){
         let cadena="";
@@ -283,10 +293,10 @@ class Arbol_B{
             let aux = raiz_actual.claves.primero;
             while(aux!=null){
                 contador++;
-                cadena+="|{"+aux.dato+"}|<p"+contador+"> ";
+                cadena+="|{"+aux.id+ aux.nombre +aux.precio + aux.cantidad+"}|<p"+contador+"> ";
                 aux= aux.siguiente;
             }
-            cadena+="\"]"+raiz_actual.claves.primero.dato+";\n";
+            cadena+="\"]"+raiz_actual.claves.primero.id+";\n";
             return cadena;
         }else{
             cadena+="node[shape=record label= \"<p0>"
@@ -294,10 +304,10 @@ class Arbol_B{
             let aux = raiz_actual.claves.primero;
             while(aux!=null){
                 contador++;
-                cadena+="|{"+aux.dato+"}|<p"+contador+"> ";
+                cadena+="|{"+aux.id+aux.nombre +aux.precio + aux.cantidad+"}|<p"+contador+"> ";
                 aux= aux.siguiente;
             }
-            cadena+="\"]"+raiz_actual.claves.primero.dato+";\n";
+            cadena+="\"]"+raiz_actual.claves.primero.id+";\n";
 
             //recorrer los hicos de cada clave
             aux = raiz_actual.claves.primero;
@@ -313,13 +323,13 @@ class Arbol_B{
     graficar_enlaces(raiz_actual){
         let cadena="";
         if(raiz_actual.es_hoja(raiz_actual)){
-            return ""+raiz_actual.claves.primero.dato+";\n";
+            return ""+raiz_actual.claves.primero.id+";\n";
         }else{
-            //cadena += ""+raiz_actual.claves.primero.dato+";\n";
+            //cadena += ""+raiz_actual.claves.primero.id+";\n";
 
             let aux = raiz_actual.claves.primero;
             let contador =0;
-            let raiz_actual_txt = raiz_actual.claves.primero.dato;
+            let raiz_actual_txt = raiz_actual.claves.primero.id;
             while(aux != null){
                 cadena+= "\n"+raiz_actual_txt+":p"+contador+"->"+this.graficar_enlaces(aux.izq);
                 contador++;
@@ -333,24 +343,24 @@ class Arbol_B{
 /************************************************************ */
 
 let arbol = new Arbol_B();
-arbol.insertar_nodo(5);
-arbol.insertar_nodo(1);
-arbol.insertar_nodo(7);
-arbol.insertar_nodo(3);
-arbol.insertar_nodo(13);
-arbol.insertar_nodo(8);
-arbol.insertar_nodo(35);
-arbol.insertar_nodo(14);
-arbol.insertar_nodo(10);
-arbol.insertar_nodo(9);
-arbol.insertar_nodo(12);
-arbol.insertar_nodo(17);
-arbol.insertar_nodo(22);
-arbol.insertar_nodo(25);
+arbol.insertar_nodo(5,"gato", 11,1);
+arbol.insertar_nodo(1,"pez",33,23);
+arbol.insertar_nodo(7,"chucho",45,12);
+arbol.insertar_nodo(3,"perica",12,99);
+arbol.insertar_nodo(13,"conejo",45,3);
+arbol.insertar_nodo(8,"pupo",11,23);
+arbol.insertar_nodo(35,"licha",3,22);
+arbol.insertar_nodo(14,"carlos",33,2);
+arbol.insertar_nodo(10,"sopero",2,44);
+arbol.insertar_nodo(9,"tortuga",22,1);
+arbol.insertar_nodo(12,"zanate",22,3);
+arbol.insertar_nodo(17,"hormiga",31,24);
+arbol.insertar_nodo(22,"michi",42,23);
+arbol.insertar_nodo(25,"misca",12,21);
 
-arbol.insertar_nodo(100);
-arbol.insertar_nodo(150);
-arbol.insertar_nodo(220);
-arbol.insertar_nodo(325);
+arbol.insertar_nodo(100,"conejo",45,3);
+arbol.insertar_nodo(150,"conejo",45,3);
+arbol.insertar_nodo(220,"conejo",45,3);
+arbol.insertar_nodo(325,"conejo",45,3);
 
 console.log(arbol.graficar());
