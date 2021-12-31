@@ -390,3 +390,42 @@ function mostrar(){
     arbol.graficar();
 
 }
+
+
+//Carga masiva del archivo
+function lectura(e) {
+    var archivo = e.target.files[0];
+    if (!archivo) {
+      return;
+    }
+    let diccionario = ""
+    var lee = new FileReader();
+    lee.onload = function(e) {
+      var contenido = e.target.result;
+      const ms = JSON.stringify(contenido);
+      diccionario = JSON.parse(contenido)
+      let tamanio = diccionario.productos.length
+      try{
+          for(i=0; i<tamanio; i ++){
+              //console.log(i)
+              /*console.log(diccionario['productos'][i]['id'])
+              console.log(diccionario['productos'][i]['nombre'])
+              console.log(diccionario['productos'][i]['precio'])
+              console.log(diccionario['productos'][i]['cantidad'])**/
+              
+              arbol.insertar_nodo(diccionario['productos'][i]['id'],diccionario['productos'][i]['nombre'],diccionario['productos'][i]['precio'],diccionario['productos'][i]['cantidad'])
+          }
+        
+      
+}catch(e){
+    window.alert(e)
+}
+
+
+
+      //mostrarContenido(contenido);
+    }
+    lee.readAsText(archivo);
+  }
+  document.getElementById('file-input')
+  .addEventListener('change', lectura, false);
