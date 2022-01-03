@@ -1,6 +1,14 @@
+
+//El grafo se utiliza para almacenar los parametros del id, id interno que se utilizará para las bodegas.
+// el nombre de la bodega, y la distancia recorrida puesta en in string
+// Se almacenarán en nodos para que se puedan 
+
 class nodo{
-    constructor(id){
+    constructor(id, id_interno,nombre, distancia){
         this.id = id;
+        this.id_interno = id_interno;
+        this.nombre = nombre;
+        this.distancia = distancia;
         this.siguiente = null;
         this.anterior = null;
         this.ponderacion=0;
@@ -14,8 +22,8 @@ class lista_adyasentes{
         this.ultimo = null;
     }
 
-    insertar(id,p){
-        let nuevo = new nodo(id);
+    insertar(id,p,id_interno,nombre, distancia){
+        let nuevo = new nodo(id,id_interno,nombre, distancia);
         nuevo.ponderacion = p;
         if(this.primero == null){
             this.primero = nuevo;
@@ -40,8 +48,8 @@ class grafo{
         this.ultimo = null;
     }
 
-    insertar(id){
-        let nuevo = new nodo(id);
+    insertar(id,id_interno,nombre, distancia){
+        let nuevo = new nodo(id,id_interno,nombre, distancia);
 
         if(this.primero == null){
             this.primero = nuevo;
@@ -84,10 +92,10 @@ class grafo{
     mostrar(){
         let aux = this.primero;
         while(aux != null){
-            console.log("-> "+aux.id);
+            console.log("-> "+aux.id + " " + aux.id_interno+ " "+aux.nombre+ " "+ aux.distancia);//añandiendo los parametros
             let aux2 = aux.adyasentes.primero;
             while(aux2 != null){
-                console.log("   -"+aux2.id);
+                console.log("   -"+aux2.id + "    -"+aux2.id_interno+"   -"+aux2.nombre+"   -"+aux2.distancia );// too long
                 aux2 = aux2.siguiente;
             }
             aux = aux.siguiente;
@@ -98,7 +106,7 @@ class grafo{
         let cadena= "digraph grafo {\n rankdir=\"LR\" \n"
         let aux = this.primero;
         while(aux != null){
-            cadena+="n"+aux.id+"[label= \""+aux.id+"\"];\n"
+            cadena+="n"+aux.id+"[label= \""+aux.id+ " " + aux.id_interno+ " "+aux.nombre+ " "+ aux.distancia+"\"];\n"
             aux = aux.siguiente;
         }
         // graficar relaciones
@@ -117,12 +125,12 @@ class grafo{
 }
 
 let grafo_prueba = new grafo();
-grafo_prueba.insertar(4);
-grafo_prueba.insertar(6);
-grafo_prueba.insertar(9);
-grafo_prueba.insertar(11);
-grafo_prueba.insertar(7);
-grafo_prueba.insertar(10);
+grafo_prueba.insertar(4,5,"pupo_movil", 15);
+grafo_prueba.insertar(6,7, "carlos_movil", 16);
+grafo_prueba.insertar(9,10,"rodilla_movil",11);
+grafo_prueba.insertar(11,14,"clicli_movil",12);
+grafo_prueba.insertar(7,3,"matriz",2);
+grafo_prueba.insertar(10,5,"cabra",25);
 
 //***** agregar adyacentes */
 grafo_prueba.agregar_adyacente(4,6,5);
