@@ -1,5 +1,5 @@
 body {
-    background-color: #f45b69;
+    background-color: #a237b1;
     font-family: "Asap", sans-serif;
   }
   .login {
@@ -72,13 +72,13 @@ body {
     margin-top: 10px;
     margin-left: -5px;
     border-radius: 5px;
-    background-color: #f45b69;
+    background-color: #5b8bf4;
     -webkit-transition: background-color 300ms;
     -moz-transition: background-color 300ms;
     transition: background-color 300ms;
   }
   .login > button:hover {
-    background-color: #f24353;
+    background-color: #438ff2;
   }
   
   @-webkit-keyframes wawes {
@@ -149,7 +149,7 @@ body {
     border-style: solid;
   }
   .nav-light {
-    background-color: white;
+    background-color: rgb(191, 218, 161);
   }
   .nav-light .btn-glass {
     color: #585858;
