@@ -3,10 +3,11 @@
 // el nombre de la bodega, y la distancia recorrida puesta en in string
 // Se almacenarán en nodos para que se puedan 
 
+//const { isVariableDeclaration } = require("typescript");
+
 class nodo{
-    constructor(id, id_interno,nombre, distancia){
+    constructor(id,nombre, distancia){
         this.id = id;
-        this.id_interno = id_interno;
         this.nombre = nombre;
         this.distancia = distancia;
         this.siguiente = null;
@@ -22,8 +23,8 @@ class lista_adyasentes{
         this.ultimo = null;
     }
 
-    insertar(id,p,id_interno,nombre, distancia){
-        let nuevo = new nodo(id,id_interno,nombre, distancia);
+    insertar(id,p,nombre){
+        let nuevo = new nodo(id,nombre);
         nuevo.ponderacion = p;
         if(this.primero == null){
             this.primero = nuevo;
@@ -48,8 +49,8 @@ class grafo{
         this.ultimo = null;
     }
 
-    insertar(id,id_interno,nombre, distancia){
-        let nuevo = new nodo(id,id_interno,nombre, distancia);
+    insertar(id,nombre){
+        let nuevo = new nodo(id,nombre);
 
         if(this.primero == null){
             this.primero = nuevo;
@@ -92,10 +93,10 @@ class grafo{
     mostrar(){
         let aux = this.primero;
         while(aux != null){
-            console.log("-> "+aux.id + " " + aux.id_interno+ " "+aux.nombre+ " "+ aux.distancia);//añandiendo los parametros
+            console.log("-> "+aux.id + " "+aux.nombre);//añandiendo los parametros
             let aux2 = aux.adyasentes.primero;
             while(aux2 != null){
-                console.log("   -"+aux2.id + "    -"+aux2.id_interno+"   -"+aux2.nombre+"   -"+aux2.distancia );// too long
+                console.log("   -"+aux2.id + " -"+aux2.nombre+"   -"+aux2.distancia );// too long
                 aux2 = aux2.siguiente;
             }
             aux = aux.siguiente;
@@ -106,7 +107,7 @@ class grafo{
         let cadena= "digraph grafo {\n rankdir=\"LR\" \n"
         let aux = this.primero;
         while(aux != null){
-            cadena+="n"+aux.id+"[label= \""+aux.id+ " " + aux.id_interno+ " "+aux.nombre+ " "+ aux.distancia+"\"];\n"
+            cadena+="n"+aux.id+"[label= \""+aux.id+ " "+aux.nombre+"\"];\n"
             aux = aux.siguiente;
         }
         // graficar relaciones
@@ -125,25 +126,28 @@ class grafo{
 }
 
 let grafo_prueba = new grafo();
-grafo_prueba.insertar(4,5,"pupo_movil", 15);
-grafo_prueba.insertar(6,7, "carlos_movil", 16);
-grafo_prueba.insertar(9,10,"rodilla_movil",11);
-grafo_prueba.insertar(11,14,"clicli_movil",12);
-grafo_prueba.insertar(7,3,"matriz",2);
-grafo_prueba.insertar(10,5,"cabra",25);
-
+/*grafo_prueba.insertar(4,"pupo_movil");
+grafo_prueba.insertar(6,"carlos_movil");
+grafo_prueba.insertar(9,"rodilla_movil");
+grafo_prueba.insertar(11,"clicli_movil");
+grafo_prueba.insertar(7,"matriz");
+grafo_prueba.insertar(10,"cabra");
+grafo_prueba.insertar(8,"meme");
+grafo_prueba.insertar(12,"goat");
+grafo_prueba.insertar(20,"matru");
+grafo_prueba.insertar(15,"cabro");
 //***** agregar adyacentes */
-grafo_prueba.agregar_adyacente(4,6,5);
-grafo_prueba.agregar_adyacente(6,4,5);
+/*grafo_prueba.agregar_adyacente(4,6,5);
+grafo_prueba.agregar_adyacente(6,8,7);
 
 grafo_prueba.agregar_adyacente(6,9,2);
-grafo_prueba.agregar_adyacente(9,6,2);
+grafo_prueba.agregar_adyacente(9,12,2);
 
 grafo_prueba.agregar_adyacente(7,9,4);
-grafo_prueba.agregar_adyacente(9,7,4);
+grafo_prueba.agregar_adyacente(9,20,4);
 
 grafo_prueba.agregar_adyacente(4,10,4);
-grafo_prueba.agregar_adyacente(10,4,4);
+grafo_prueba.agregar_adyacente(10,15,4);
 
 grafo_prueba.agregar_adyacente(9,11,9);
 grafo_prueba.agregar_adyacente(11,9,9);
@@ -157,4 +161,64 @@ grafo_prueba.agregar_adyacente(10,7,8);
 grafo_prueba.agregar_adyacente(6,11,6);
 grafo_prueba.agregar_adyacente(11,6,6);
 
-grafo_prueba.graficar();
+grafo_prueba.agregar_adyacente(8,11,6);
+grafo_prueba.agregar_adyacente(11,6,6);
+*/
+
+
+
+
+//Carga masiva del archivo del grafo 
+function lectura_grafo(e) {
+    var archivo = e.target.files[0];
+    if (!archivo) {
+      return;
+    }
+    let diccionario = ""
+    var lee = new FileReader();
+    lee.onload = function(e) {
+      var contenido = e.target.result;
+      const ms = JSON.stringify(contenido);
+      diccionario = JSON.parse(contenido)
+      let tamanio = diccionario.rutas.length
+      
+      try{
+          for(i=0; i<tamanio; i ++){
+           
+              //console.log(i)
+              console.log(diccionario['rutas'][i]['id'])
+              console.log(diccionario['rutas'][i]['nombre'])
+              console.log(diccionario['rutas'][i]['adyacentes'])
+              grafo_prueba.insertar(diccionario['rutas'][i]['id'],diccionario['rutas'][i]['nombre'])
+              
+              variable= diccionario['rutas'][i]['adyacentes'].length
+              for(x=0;x<variable;x++){
+                  console.log('id',diccionario['rutas'][i]['adyacentes'][x]['id'])
+                  console.log('nombre',diccionario['rutas'][i]['adyacentes'][x]['nombre'])
+                  console.log('distancia',diccionario['rutas'][i]['adyacentes'][x]['distancia'])
+                  grafo_prueba.agregar_adyacente(('id',diccionario['rutas'][i]['adyacentes'][x]['id'],'nombre'),(diccionario['rutas'][i]['adyacentes'][x]['nombre']),('distancia',diccionario['rutas'][i]['adyacentes'][x]['distancia']))
+                  
+                }
+
+            
+             
+          }
+          grafo_prueba.graficar();
+        
+      
+}catch(e){
+    window.alert(e)
+}
+
+
+
+      //mostrarContenido(contenido);
+    }
+    lee.readAsText(archivo);
+  }
+  document.getElementById('file-inputo')
+  .addEventListener('change', lectura_grafo, false);
+
+  function mostrando(){
+    grafo_prueba.graficar()
+}

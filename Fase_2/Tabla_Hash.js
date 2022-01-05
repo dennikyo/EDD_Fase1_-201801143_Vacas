@@ -107,7 +107,7 @@ class hash{
     recorrer(){
         for(var i =0;i<this.size;i++){
             if(this.claves[i]!=null){
-                console.log("-->"+this.claves[i].id_venta+this.claves[i].nombre_vendedor+this.claves[i].nombre_cliente+this.claves[i].total_venta);
+                console.log("-->"+this.claves[i].id_venta+this.claves[i].nombre_vendedor+this.claves[i].nombre_cliente);
             }else{
                 console.log("------------");
             }
@@ -117,14 +117,14 @@ class hash{
 
 let tabla = new hash();
 
-tabla.insertar(new nodo(10,"pupo","licha",100));
-tabla.insertar(new nodo(8,"pupo","licha",100));
-tabla.insertar(new nodo(2,"pupo","licha",100));
-tabla.insertar(new nodo(9,"pupo","licha",100));
-tabla.insertar(new nodo(81,"pupo","licha",100));
-tabla.insertar(new nodo(12,"pupo","licha",100));
-tabla.insertar(new nodo(90,"pupo","licha",100));
-tabla.insertar(new nodo(181,"pupo","licha",100));
-tabla.insertar(new nodo(112,"pupo","licha",100));
-tabla.insertar(new nodo(190,"pupo","licha",100));
+tabla.insertar(new nodo(10,"pupo","licha"));
+tabla.insertar(new nodo(8,"pupo","licha"));
+tabla.insertar(new nodo(2,"pupo","licha"));
+tabla.insertar(new nodo(9,"pupo","licha"));
+tabla.insertar(new nodo(81,"pupo","licha"));
+tabla.insertar(new nodo(12,"pupo","licha"));
+tabla.insertar(new nodo(90,"pupo","licha"));
+tabla.insertar(new nodo(181,"pupo","licha"));
+tabla.insertar(new nodo(112,"pupo","licha"));
+tabla.insertar(new nodo(190,"pupo","licha"));
 tabla.recorrer();
