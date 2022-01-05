@@ -97,6 +97,7 @@ button:hover{
 					<p id="contenido-archivo"></p>
 					
 					<button onclick="cerrar()" >Cerrar Sesion</button>
+					<button onclick="fdos()" >2Fase </button>
 
 				</form>
 			</div>
@@ -112,6 +113,11 @@ function abrir(){
 function cerrar(){
 	miventana = self.open("Login.html");
 	miventana2 = self.close("Registro_Admin.html");
+}
+
+function fdos(){
+	miventana = self.open("Vendedor.html");
+	miventana_2 = self.close("Registro_Admin.html");
 }
 </script>
 <script src="../Estructuras/ABB.js"></script>
