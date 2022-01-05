@@ -52,7 +52,6 @@ class cadena{
       console.log(item);
     }
   }
-  
 }
 
 /*block = new bloque(0,"prueba",'00000000');
