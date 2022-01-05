@@ -196,7 +196,7 @@ function lectura_grafo(e) {
                   console.log('id',diccionario['rutas'][i]['adyacentes'][x]['id'])
                   console.log('nombre',diccionario['rutas'][i]['adyacentes'][x]['nombre'])
                   console.log('distancia',diccionario['rutas'][i]['adyacentes'][x]['distancia'])
-                  grafo_prueba.agregar_adyacente(('id',diccionario['rutas'][i]['adyacentes'][x]['id'],'nombre'),(diccionario['rutas'][i]['adyacentes'][x]['nombre']),('distancia',diccionario['rutas'][i]['adyacentes'][x]['distancia']))
+                  grafo_prueba.agregar_adyacente(diccionario['rutas'][i]['id'],diccionario['rutas'][i]['adyacentes'][x]['id'],diccionario['rutas'][i]['adyacentes'][x]['distancia'])
                   
                 }
 
